@@ -11,14 +11,14 @@
         android:layout_height="200dp"
         app:arc_cropCurve="cropConvex"
         app:arc_height="48dp"
-        app:arc_position="bottom">
+        app:arc_position="bottom" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             android:orientation="vertical"
-            android:scaleType="fitXY">
+            android:scaleType="fitXY" />
 
     </xyz.sahildave.arclayout.ArcLayout>
 
@@ -38,7 +38,7 @@
             android:id="@+id/curveBottomBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarsize"
-            andorid:layout_gravity="bottom"
+            android:layout_gravity="bottom"
             app:bottomBarColor="@color/colorPrimary"
             app:curveRadius="30dp"
             app:itemIconTint="@color/selector_navigation"
@@ -49,8 +49,8 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            andorid:layout_gravity="bottom|center"
-            android:marginBottom="35dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="35dp"
             android:src="@drawable/ic_comic"
             app:elevation="4dp"
             app:fabSize="normal" />
