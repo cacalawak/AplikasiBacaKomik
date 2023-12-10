@@ -47,11 +47,23 @@
                 android:layout_toStartOf="@+id/spPage"
                 android:text="Page"
                 android:textColor="@android:color/black"
-                android:textSize="14sp">
+                android:textSize="14sp" />
 
-            </TextView>
+                <Spinner
+                    android:id="@+id/spPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/black" />
 
         </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListGenre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp" />
 
     </LinearLayout>
 
