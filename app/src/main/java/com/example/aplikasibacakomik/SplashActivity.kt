@@ -9,14 +9,13 @@ import com.example.aplikasibacakomik.R
 
 class SplashActivity : AppCompatActivity() {
 
-    private val SPLASH_TIME_OUT: Long = 3000 // Splash screen timeout in milliseconds
+    private val SPLASH_TIME_OUT: Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            // Pindah ke MainActivity setelah SPLASH_TIME_OUT
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
