@@ -22,17 +22,16 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.example.aplikasibacakomik.model.ModelChapter
-import com.example.aplikasibacakomik.model.ModelKomik
 import com.example.aplikasibacakomik.networking.ApiEndpoint
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.aplikasibacakomik.ChapterActivity
+import model.ModelChapter
+import model.ModelKomik
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.ArrayList
-import java.util.List
 
 class DetailGenreActivity : AppCompatActivity(), AdapterChapter.OnSelectData {
     private var toolbar: Toolbar? = null

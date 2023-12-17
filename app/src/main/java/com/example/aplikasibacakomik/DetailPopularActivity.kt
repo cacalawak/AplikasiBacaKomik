@@ -1,6 +1,7 @@
 package com.example.aplikasibacakomik
 
 
+import adapter.AdapterChapter
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
@@ -31,6 +32,8 @@ import com.example.aplikasibacakomik.networking.ApiEndpoint
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.aplikasibacakomik.activities.ChapterActivity
+import model.ModelChapter
+import model.ModelKomik
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -185,7 +188,7 @@ class DetailPopularActivity : AppCompatActivity(), AdapterChapter.OnSelectData {
         }
 
     private fun showAllChapter() {
-        adapterChapter = AdapterChapter(this@DetailPopulerActivity, modelChapter, this)
+        adapterChapter = AdapterChapter(this@DetailPopulerActivity, ModelChapter, this)
         rvChapter?.adapter = adapterChapter
     }
 

@@ -22,9 +22,8 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.aplikasibacakomik.DetailGenreActivity
 import com.example.aplikasibacakomik.R
-import adapter.AdapterListGenre
-import com.example.aplikasibacakomik.model.ModelGenre
-import com.example.aplikasibacakomik.model.ModelKomik
+import model.ModelGenre
+import model.ModelKomik
 import com.example.aplikasibacakomik.networking.ApiEndpoint
 import org.json.JSONArray
 import org.json.JSONException
