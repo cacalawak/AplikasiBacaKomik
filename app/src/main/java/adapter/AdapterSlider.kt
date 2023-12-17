@@ -6,43 +6,30 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikasibacakomik.R
+import model.ModelSlider
 
 
-class AdapterSlider(movies: List<ModelSlider>) :
-    CardSliderAdapter<AdapterSlider.MovieViewHolder?>() {
-    private val movies: List<ModelSlider>
+class AdapterSlider(private val movies: List<ModelSlider>) :
+    CardStackAdapter<AdapterSlider.MovieViewHolder>() {
 
-    init {
-        this.movies = movies
-    }
-
-    @Override
-    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view: View = LayoutInflater.from(parent.getContext())
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item_slider, parent, false)
         return MovieViewHolder(view)
     }
 
-    @Override
-    fun bindVH(viewHolder: MovieViewHolder, position: Int) {
-        Glide.with(viewHolder.itemView)
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        Glide.with(holder.itemView)
             .load(movies[position].getThumb())
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .override(Target.SIZE_ORIGINAL)
-            .into(viewHolder.imgSlider)
+            .into(holder.imgSlider)
     }
 
-    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemView: View
-        var imgSlider: ImageView
-
-        init {
-            imgSlider = itemView.findViewById(R.id.imgSlider)
-            this.itemView = itemView
-        }
+    inner class MovieViewHolder(itemView: View) : CardStackView.ViewHolder(itemView) {
+        var imgSlider: ImageView = itemView.findViewById(R.id.imgSlider)
     }
 
-    @get:Override
-    val itemCount: Int
-        get() = movies.size()
+    override val itemCount: Int
+        get() = movies.size
 }

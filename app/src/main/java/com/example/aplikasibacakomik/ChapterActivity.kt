@@ -4,37 +4,32 @@ import adapter.AdapterImageChapter
 import android.os.Bundle
 import android.renderscript.RenderScript
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
-import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.example.aplikasibacakomik.adapter.AdapterImageChapter
-import com.example.aplikasibacakomik.model.ModelChapter
-import com.example.aplikasibacakomik.networking.ApiEndpoint
+import com.example.aplikasibacakomik.ApiEndpoint
 import model.ModelChapter
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
 class ChapterActivity : AppCompatActivity() {
+
     private var toolbar: Toolbar? = null
     private var tvTitle: TextView? = null
     private var tvSubTitle: TextView? = null
-    private var imgChapter: ImageView? = null
-    private var ChapterEndpoint: String? = null
-    private var Title: String? = null
-    private var Subtitle: String? = null
-    private var modelChapter: ModelChapter? = null
     private var viewPager: ViewPager? = null
     private var btnNext: Button? = null
     private var btnPrev: Button? = null
     private var adapter: AdapterImageChapter? = null
+    private var modelChapter: ModelChapter? = null
+    private var ChapterEndpoint: String? = null
+    private var Title: String? = null
+    private var Subtitle: String? = null
     private var modelChapters: MutableList<ModelChapter> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +65,13 @@ class ChapterActivity : AppCompatActivity() {
                 viewPager?.currentItem = (viewPager?.currentItem ?: 0) - 1
             }
 
-            chapterImage()
+            if (ChapterEndpoint != null) {
+                chapterImage()
+            } else {
+                showToast("Invalid chapter data")
+            }
+        } else {
+            showToast("Invalid chapter data")
         }
     }
 

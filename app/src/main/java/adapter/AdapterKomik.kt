@@ -9,75 +9,66 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.target.Target
 import com.example.aplikasibacakomik.R
+import model.ModelKomik
 
-class AdapterKomik(context: Context, items: List<ModelKomik>, xSelectData: onSelectData) :
-    Adapter<AdapterKomik.ViewHolder?>() {
-    private val items: List<ModelKomik>
+class AdapterKomik(
+    private val context: Context,
+    private val items: List<ModelKomik>,
     private val onSelectData: onSelectData
-    private val mContext: Context
+) : RecyclerView.Adapter<AdapterKomik.ViewHolder>() {
 
     interface onSelectData {
         fun onSelected(modelKomik: ModelKomik?)
     }
 
-    init {
-        mContext = context
-        this.items = items
-        onSelectData = xSelectData
-    }
-
-    @Override
-    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.getContext())
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item_komik, parent, false)
         return ViewHolder(view)
     }
 
-    @Override
-    fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data: ModelKomik = items[position]
-        if (data.getType()
-                .equals("Manhua")
-        ) holder.tvType.setTextColor(Color.parseColor("#ff27AE60")) else if (data.getType()
-                .equals("Manhwa")
-        ) holder.tvType.setTextColor(Color.parseColor("#ffF2994A")) else if (data.getType()
-                .equals("Manga")
-        ) holder.tvType.setTextColor(Color.parseColor("#ffE8505B"))
-        Glide.with(mContext)
+
+        // Use when expression for better readability
+        val typeColor = when (data.getType()) {
+            "Manhua" -> Color.parseColor("#ff27AE60")
+            "Manhwa" -> Color.parseColor("#ffF2994A")
+            "Manga" -> Color.parseColor("#ffE8505B")
+            else -> Color.BLACK // Handle the default case if needed
+        }
+
+        holder.tvType.setTextColor(typeColor)
+
+        Glide.with(context)
             .load(data.getThumb())
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .override(Target.SIZE_ORIGINAL)
             .into(holder.imgPhoto)
-        holder.tvTitle.setText(data.getTitle())
-        holder.tvType.setText(data.getType())
-        holder.tvDate.setText(data.getUpdated())
-        holder.cvTerbaru.setOnClickListener(object : OnClickListener() {
-            @Override
-            fun onClick(v: View?) {
-                onSelectData.onSelected(data)
-            }
-        })
+
+        holder.tvTitle.text = data.getTitle()
+        holder.tvType.text = data.getType()
+        holder.tvDate.text = data.getUpdated()
+
+        holder.cvTerbaru.setOnClickListener {
+            onSelectData.onSelected(data)
+        }
     }
 
-    @get:Override
-    val itemCount: Int
-        get() = items.size()
+    override fun getItemCount(): Int {
+        return items.size
+    }
 
-    //Class Holder
+    // Class Holder
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvTitle: TextView
-        var tvType: TextView
-        var tvDate: TextView
-        var cvTerbaru: CardView
-        var imgPhoto: ImageView
-
-        init {
-            cvTerbaru = itemView.findViewById(R.id.cvTerbaru)
-            imgPhoto = itemView.findViewById(R.id.imgPhoto)
-            tvTitle = itemView.findViewById(R.id.tvTitle)
-            tvType = itemView.findViewById(R.id.tvType)
-            tvDate = itemView.findViewById(R.id.tvDate)
-        }
+        var tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
+        var tvType: TextView = itemView.findViewById(R.id.tvType)
+        var tvDate: TextView = itemView.findViewById(R.id.tvDate)
+        var cvTerbaru: CardView = itemView.findViewById(R.id.cvTerbaru)
+        var imgPhoto: ImageView = itemView.findViewById(R.id.imgPhoto)
     }
 }

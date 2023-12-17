@@ -9,15 +9,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikasibacakomik.R
-
+import model.ModelGenre
 
 class AdapterGenre(context: Context, items: List<ModelGenre>, xSelectData: onSelectData) :
-    Adapter<AdapterGenre.ViewHolder?>() {
+    RecyclerView.Adapter<AdapterGenre.ViewHolder>() {
+
     private val items: List<ModelGenre>
     private val onSelectData: onSelectData
     private val mContext: Context
 
-    interface onSelectData {
+    interface OnSelectData {
         fun onSelected(modelGenre: ModelGenre?)
     }
 
@@ -27,37 +28,27 @@ class AdapterGenre(context: Context, items: List<ModelGenre>, xSelectData: onSel
         onSelectData = xSelectData
     }
 
-    @Override
-    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.getContext())
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item_genre, parent, false)
         return ViewHolder(view)
     }
 
-    @Override
-    fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data: ModelGenre = items[position]
-        holder.tvGenre.setText(data.getTitle())
-        holder.llGenre.setOnClickListener(object : OnClickListener() {
-            @Override
-            fun onClick(v: View?) {
-                onSelectData.onSelected(data)
-            }
-        })
+        holder.tvGenre.text = data.getTitle()
+        holder.llGenre.setOnClickListener {
+            onSelectData.onSelected(data)
+        }
     }
 
-    @get:Override
-    val itemCount: Int
-        get() = items.size()
+    override fun getItemCount(): Int {
+        return items.size
+    }
 
-    //Class Holder
+    // Class Holder
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var llGenre: LinearLayout
-        var tvGenre: TextView
-
-        init {
-            llGenre = itemView.findViewById(R.id.llGenre)
-            tvGenre = itemView.findViewById(R.id.tvGenre)
-        }
+        var llGenre: LinearLayout = itemView.findViewById(R.id.llGenre)
+        var tvGenre: TextView = itemView.findViewById(R.id.tvGenre)
     }
 }

@@ -13,22 +13,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.azhar.komik.R
 import com.example.aplikasibacakomik.ListGenreActivity
-import com.azhar.komik.adapter.AdapterGenre
-import com.azhar.komik.model.ModelGenre
 import com.azhar.komik.networking.ApiEndpoint
 import com.azhar.komik.utils.LayoutMarginDecoration
 import com.azhar.komik.utils.Tools
 import com.example.aplikasibacakomik.R
+import model.ModelGenre
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.ArrayList
-import java.util.List
 
 class GenreFragment : Fragment(), AdapterGenre.OnSelectData {
     private var rvGenre: RecyclerView? = null
