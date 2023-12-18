@@ -1,6 +1,6 @@
-package com.example.aplikasibacakomik
+package com.example.aplikasibacakomik.activity
 
-import adapter.AdapterChapter
+import com.example.aplikasibacakomik.adapter.AdapterChapter
 import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Color
@@ -19,15 +19,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.example.aplikasibacakomik.networking.ApiEndpoint
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.aplikasibacakomik.ChapterActivity
-import model.ModelChapter
-import model.ModelKomik
+import com.example.aplikasibacakomik.R
+import com.example.aplikasibacakomik.model.ModelChapter
+import com.example.aplikasibacakomik.model.ModelKomik
+import com.example.aplikasibacakomik.networking.ApiEndPoint
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -136,7 +135,7 @@ class DetailGenreActivity : AppCompatActivity(), AdapterChapter.OnSelectData {
     private val totalChapter: Unit
         private get() {
             progressDialog?.show()
-            AndroidNetworking.get(ApiEndpoint.DETAILMANGAURL)
+            AndroidNetworking.get(ApiEndPoint.GENREURL)
                 .addPathParameter("endpoint", Endpoint)
                 .setPriority(RenderScript.Priority.HIGH)
                 .build()

@@ -1,4 +1,4 @@
-package adapter
+package com.example.aplikasibacakomik.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikasibacakomik.R
-import model.ModelChapter
+import com.example.aplikasibacakomik.model.ModelChapter
 
 class AdapterChapter(
     context: Context,

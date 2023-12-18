@@ -1,12 +1,14 @@
-package adapter
+package com.example.aplikasibacakomik.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.aplikasibacakomik.R
-import model.ModelSlider
+import com.example.aplikasibacakomik.model.ModelSlider
 
 
 class AdapterSlider(private val movies: List<ModelSlider>) :

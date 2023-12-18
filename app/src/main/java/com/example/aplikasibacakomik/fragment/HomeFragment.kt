@@ -1,7 +1,7 @@
-package fragment
+package com.example.aplikasibacakomik.fragment
 
-import adapter.AdapterKomik
-import adapter.AdapterSlider
+import com.example.aplikasibacakomik.adapter.AdapterKomik
+import com.example.aplikasibacakomik.adapter.AdapterSlider
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
@@ -28,8 +28,9 @@ import com.azhar.komik.model.ModelSlider
 import com.azhar.komik.networking.ApiEndpoint
 import com.example.aplikasibacakomik.R
 import com.github.islamkhsh.CardSliderViewPager
-import model.ModelKomik
-import model.ModelSlider
+import com.example.aplikasibacakomik.model.ModelKomik
+import com.example.aplikasibacakomik.model.ModelSlider
+import com.example.aplikasibacakomik.networking.ApiEndPoint
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -110,7 +111,7 @@ class HomeFragment : Fragment(), AdapterKomik.onSelectData {
     private val imageSlider: Unit
         private get() {
             progressDialog.show()
-            AndroidNetworking.get(ApiEndpoint.ALSOURL)
+            AndroidNetworking.get(ApiEndPoint.ALSOURL)
                 .setPriority(RenderScript.Priority.HIGH)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener() {

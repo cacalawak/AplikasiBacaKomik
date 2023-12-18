@@ -1,4 +1,4 @@
-package adapter
+package com.example.aplikasibacakomik.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.Target
 import com.example.aplikasibacakomik.R
-import model.ModelChapter
+import com.example.aplikasibacakomik.model.ModelChapter
 
 class AdapterImageChapter(private val items: List<ModelChapter>, private val context: Context) :
     PagerAdapter() {

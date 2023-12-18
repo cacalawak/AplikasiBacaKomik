@@ -1,4 +1,4 @@
-package model
+package com.example.aplikasibacakomik.model
 
 import java.io.Serializable
 

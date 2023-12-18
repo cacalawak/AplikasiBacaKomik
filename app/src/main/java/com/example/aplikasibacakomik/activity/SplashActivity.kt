@@ -1,11 +1,10 @@
-package com.example.aplikasibacakomik
+package com.example.aplikasibacakomik.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplikasibacakomik.R
-import com.example.aplikasibacakomik.activities.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 

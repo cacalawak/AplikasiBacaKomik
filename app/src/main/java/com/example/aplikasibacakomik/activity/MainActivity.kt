@@ -1,4 +1,4 @@
-package com.example.aplikasibacakomik.activities
+package com.example.aplikasibacakomik.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.akshay.library.CurveBottomBar
+import com.
 import com.example.aplikasibacakomik.R
-import fragment.HomeFragment
+import com.example.aplikasibacakomik.fragment.HomeFragment
 import com.example.aplikasibacakomik.utils.BottomBarBehavior
-import fragment.GenreFragment
+import com.example.aplikasibacakomik.fragment.GenreFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navigation = findViewById(R.id.curveBottomBar)
+        navigation = findViewById(R.id.CurveBottomBar)
         navigation?.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         val layoutParams: CoordinatorLayout.LayoutParams =

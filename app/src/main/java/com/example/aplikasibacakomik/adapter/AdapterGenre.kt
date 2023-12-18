@@ -1,4 +1,4 @@
-package adapter
+package com.example.aplikasibacakomik.adapter
 
 
 import android.content.Context
@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikasibacakomik.R
-import model.ModelGenre
+import com.example.aplikasibacakomik.model.ModelGenre
 
 class AdapterGenre(context: Context, items: List<ModelGenre>, xSelectData: onSelectData) :
     RecyclerView.Adapter<AdapterGenre.ViewHolder>() {

@@ -14,19 +14,19 @@
         android:theme="@style/Theme.AplikasiBacaKomik"
         tools:targetApi="31">
         <activity
-            android:name=".ListGenreActivity"
+            android:name=".activity.ListGenreActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailPopularActivity"
+            android:name=".activity.DetailPopularActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailGenreActivity"
+            android:name=".activity.DetailGenreActivity"
             android:exported="false" />
         <activity
-            android:name=".ChapterActivity"
+            android:name=".activity.ChapterActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

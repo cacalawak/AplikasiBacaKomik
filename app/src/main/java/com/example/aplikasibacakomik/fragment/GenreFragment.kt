@@ -1,6 +1,6 @@
-package fragment
+package com.example.aplikasibacakomik.fragment
 
-import adapter.AdapterGenre
+import com.example.aplikasibacakomik.adapter.AdapterGenre
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.example.aplikasibacakomik.ListGenreActivity
-import com.azhar.komik.networking.ApiEndpoint
-import com.azhar.komik.utils.LayoutMarginDecoration
-import com.azhar.komik.utils.Tools
+import com.example.aplikasibacakomik.activity.ListGenreActivity
+import com.example.aplikasibacakomik.networking.ApiEndPoint
 import com.example.aplikasibacakomik.R
-import model.ModelGenre
+import com.example.aplikasibacakomik.model.ModelGenre
+import com.example.aplikasibacakomik.utils.LayoutMarginDecoration
+import com.example.aplikasibacakomik.utils.Tools
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -62,7 +62,7 @@ class GenreFragment : Fragment(), AdapterGenre.OnSelectData {
     private val genre: Unit
         get() {
             progressDialog?.show()
-            AndroidNetworking.get(ApiEndpoint.GENREURL)
+            AndroidNetworking.get(ApiEndPoint.GENREURL)
                 .setPriority(RenderScript.Priority.HIGH)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {

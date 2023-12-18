@@ -1,6 +1,6 @@
-package com.example.aplikasibacakomik
+package com.example.aplikasibacakomik.activity
 
-import adapter.AdapterImageChapter
+import com.example.aplikasibacakomik.adapter.AdapterImageChapter
 import android.os.Bundle
 import android.renderscript.RenderScript
 import android.widget.Button
@@ -11,8 +11,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.example.aplikasibacakomik.ApiEndpoint
-import model.ModelChapter
+import com.example.aplikasibacakomik.R
+import com.example.aplikasibacakomik.model.ModelChapter
+import com.example.aplikasibacakomik.networking.ApiEndPoint
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -76,7 +77,7 @@ class ChapterActivity : AppCompatActivity() {
     }
 
     private fun chapterImage() {
-        AndroidNetworking.get(ApiEndpoint.CHAPTERURL)
+        AndroidNet.get(ApiEndPoint.CHAPTERURL)
             .addPathParameter("chapter_endpoint", ChapterEndpoint)
             .setPriority(RenderScript.Priority.HIGH)
             .build()
